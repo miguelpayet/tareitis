@@ -1,0 +1,9 @@
+name: tareitis
+ 
+database:
+ driverClass: com.mysql.jdbc.Driver
+ user: root
+ password: root
+ url: jdbc:mysql://localhost/mydb
+ properties:
+  hibernate.dialect: org.hibernate.dialect.MySQLDialect
