@@ -34,5 +34,6 @@ public class ListaResource {
 	@PUT
 	@Timed
 	public void grabarLista() {
+		LOGGER.info("ListaResource.grabarLista");
 	}
 }

@@ -2,6 +2,7 @@ package com.tareitis.lista;
 
 import io.dropwizard.Configuration;
 import io.dropwizard.ConfiguredBundle;
+import io.dropwizard.jetty.setup.ServletEnvironment;
 import io.dropwizard.setup.Bootstrap;
 import io.dropwizard.setup.Environment;
 
@@ -13,6 +14,9 @@ import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.config.IniSecurityManagerFactory;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.util.Factory;
+import org.apache.shiro.web.env.EnvironmentLoaderListener;
+import org.apache.shiro.web.servlet.ShiroFilter;
+import org.eclipse.jetty.server.session.SessionHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -28,10 +32,10 @@ public abstract class MiShiroBundle<T extends Configuration> implements Configur
 
 	public void run(ListaConfiguration configuration, Environment environment) throws Exception {
 		LOGGER.info("MiShiroBundle.run");
-		environment
-				.servlets()
-				.addFilter("shiro-filter", new MiShiroFilter())
-				.addMappingForUrlPatterns(EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), true,
-						new String[] { "/*" });
+		ServletEnvironment e = environment.servlets();
+		e.addServletListeners(new EnvironmentLoaderListener());
+		e.setSessionHandler(new SessionHandler());
+		e.addFilter("shiro-filter", new ShiroFilter()).addMappingForUrlPatterns(
+				EnumSet.of(DispatcherType.REQUEST, DispatcherType.FORWARD), true, new String[] { "/*" });
 	}
 }
