@@ -23,7 +23,6 @@ public class ListaResource {
 	}
 
 	@GET
-	@Timed
 	public Lista obtenerLista(@QueryParam("name") Optional<String> name) {
 		LOGGER.info("ListaResource.obtenerLista");
 		int codUsuario = 0;
@@ -32,8 +31,8 @@ public class ListaResource {
 	}
 
 	@PUT
-	@Timed
 	public void grabarLista() {
 		LOGGER.info("ListaResource.grabarLista");
 	}
+	
 }

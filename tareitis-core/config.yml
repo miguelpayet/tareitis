@@ -7,3 +7,5 @@ database:
  url: jdbc:mysql://localhost/mydb
  properties:
   hibernate.dialect: org.hibernate.dialect.MySQLDialect
+logging:
+ level: INFO

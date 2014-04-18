@@ -32,7 +32,9 @@ public class ListaApplication extends Application<ListaConfiguration> {
 
 	public void run(ListaConfiguration configuration, Environment environment) {
 		TareaDAO tareaDAO = new TareaDAO(this.hibernate.getSessionFactory());
-		ListaResource resource = new ListaResource(tareaDAO);
-		environment.jersey().register(resource);
+		ListaResource listaResource = new ListaResource(tareaDAO);
+		environment.jersey().register(listaResource);
+		LoginResource loginResource = new LoginResource();
+		environment.jersey().register(loginResource);
 	}
 }
