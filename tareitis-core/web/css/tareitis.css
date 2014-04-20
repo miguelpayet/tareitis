@@ -1,0 +1,16 @@
+body {
+width:100%;
+}
+
+.login {
+	margin: 20px;
+}
+
+.login ul {
+list-style-type:none;
+padding: 0;
+}
+
+label {
+	width: 100px;
+}

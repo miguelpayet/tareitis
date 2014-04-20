@@ -33,7 +33,6 @@ public class LoginResource {
 		} else {
 			LOGGER.info("nay!");
 		}
-
 	}
 
 }
