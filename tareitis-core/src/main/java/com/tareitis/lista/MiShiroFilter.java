@@ -17,7 +17,7 @@ import org.slf4j.LoggerFactory;
 public class MiShiroFilter implements Filter {
 	private static final Logger LOGGER = LoggerFactory.getLogger(ListaResource.class);
 
-	public void init(FilterConfig config) throws ServletException {
+	public void destroy() {
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException,
@@ -29,6 +29,6 @@ public class MiShiroFilter implements Filter {
 		chain.doFilter(request, response);
 	}
 
-	public void destroy() {
+	public void init(FilterConfig config) throws ServletException {
 	}
 }
